@@ -6,11 +6,11 @@ const Contact = () => {
     <section id="contact" className="py-24 bg-secondary/30">
       <div className="container mx-auto px-4">
         <h2 className="text-center mb-4 animate-fade-in">
-          <span className="text-gradient">Visit Us</span>
+          <span className="text-gradient">Visítanos</span>
         </h2>
         
         <p className="text-center text-muted-foreground text-lg mb-12 animate-fade-in">
-          Find us in the heart of the Dominican Republic
+          Encuéntranos en el corazón de República Dominicana
         </p>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
@@ -21,10 +21,10 @@ const Contact = () => {
                 <MapPin className="w-6 h-6 text-primary" />
               </div>
               <div>
-                <h3 className="font-bold text-lg mb-2">Location</h3>
+                <h3 className="font-bold text-lg mb-2">Ubicación</h3>
                 <p className="text-muted-foreground">
                   Calle Principal #123<br />
-                  Santo Domingo, Dominican Republic
+                  Santo Domingo, República Dominicana
                 </p>
               </div>
             </div>
@@ -34,11 +34,11 @@ const Contact = () => {
                 <Clock className="w-6 h-6 text-primary" />
               </div>
               <div>
-                <h3 className="font-bold text-lg mb-2">Hours</h3>
+                <h3 className="font-bold text-lg mb-2">Horario</h3>
                 <p className="text-muted-foreground">
-                  Monday - Friday: 10:00 AM - 8:00 PM<br />
-                  Saturday: 11:00 AM - 6:00 PM<br />
-                  Sunday: By Appointment
+                  Lunes a Viernes: 10:00 AM - 8:00 PM<br />
+                  Sábado: 11:00 AM - 6:00 PM<br />
+                  Domingo: Con cita previa
                 </p>
               </div>
             </div>
@@ -48,7 +48,7 @@ const Contact = () => {
                 <Phone className="w-6 h-6 text-primary" />
               </div>
               <div>
-                <h3 className="font-bold text-lg mb-2">Phone</h3>
+                <h3 className="font-bold text-lg mb-2">Teléfono</h3>
                 <p className="text-muted-foreground">+1 (809) 555-1234</p>
               </div>
             </div>
@@ -64,7 +64,7 @@ const Contact = () => {
             </div>
 
             <div className="pt-4">
-              <h3 className="font-bold text-lg mb-4">Follow Us</h3>
+              <h3 className="font-bold text-lg mb-4">Síguenos</h3>
               <div className="flex gap-4">
                 <Button
                   variant="outline"

@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import Image from "next/image";
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -29,10 +30,15 @@ const Navigation = () => {
         isScrolled ? "bg-background/95 backdrop-blur-md shadow-lg" : "bg-transparent"
       }`}
     >
-      <div className="container mx-auto px-4 py-4">
+      <div className="container mx-auto px-4">
         <div className="flex items-center justify-between">
-          <Link href="/" className="text-2xl font-display font-bold text-gradient">
-            MiguetattoRD
+          <Link href="/" className="">
+            <Image
+              src="/tattoologo-removebg-preview.png"
+              alt="Logo"
+              width={90}
+              height={90}
+            />
           </Link>
 
           {/* Desktop Menu */}

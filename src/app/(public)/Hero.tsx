@@ -31,7 +31,7 @@ const Hero = () => {
           />
         </div>
         <Image
-          src="/hero-bg.jpg"
+          src="/pexels-eduardordone-2928342.jpg"
           alt="MiguetattoRD Studio"
           className="w-full h-full object-cover"
           fill
@@ -57,7 +57,7 @@ const Hero = () => {
               onClick={scrollToBooking}
               className="bg-primary hover:bg-primary/90 text-white px-8 py-6 text-lg font-medium rounded-none border-2 border-primary hover:border-primary/90 transition-all duration-300"
             >
-              BOOK NOW
+              RESERVA AHORA
             </Button>
             <Button
               size="lg"

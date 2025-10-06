@@ -4,20 +4,20 @@ const Testimonials = () => {
   const testimonials = [
     {
       id: 1,
-      name: "Maria Rodriguez",
-      text: "Absolutely amazing work! Miguel brought my vision to life perfectly. The attention to detail is incredible and the studio is spotless. Highly recommend!",
+      name: "María Rodríguez",
+      text: "¡Un trabajo absolutamente increíble! Miguel dio vida perfectamente a mi visión. La atención al detalle es increíble y el estudio está impecable. ¡Muy recomendado!",
       rating: 5,
     },
     {
       id: 2,
       name: "Carlos Santos",
-      text: "Best tattoo experience I've ever had. Professional, clean, and the final result exceeded my expectations. Worth every penny!",
+      text: "La mejor experiencia de tatuaje que he tenido. Profesional, limpio y el resultado final superó mis expectativas. ¡Valió cada centavo!",
       rating: 5,
     },
     {
       id: 3,
-      name: "Ana Martinez",
-      text: "Miguel is a true artist. His realism work is stunning and he made me feel comfortable throughout the entire process. Will definitely be back!",
+      name: "Ana Martínez",
+      text: "Miguel es un verdadero artista. Su trabajo de realismo es impresionante y me hizo sentir cómoda durante todo el proceso. ¡Definitivamente volveré!",
       rating: 5,
     },
   ];
@@ -26,11 +26,11 @@ const Testimonials = () => {
     <section id="testimonials" className="py-24 bg-background">
       <div className="container mx-auto px-4">
         <h2 className="text-center mb-4 animate-fade-in">
-          <span className="text-gradient">Client Love</span>
+          <span className="text-gradient">Lo que dicen nuestros clientes</span>
         </h2>
         
         <p className="text-center text-muted-foreground text-lg mb-12 animate-fade-in">
-          What our clients say about us
+          Lo que nuestros clientes dicen sobre nosotros
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
