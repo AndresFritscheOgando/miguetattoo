@@ -1,17 +1,19 @@
 'use client'
 
 import { supabase } from "../supabase/client";
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { Client } from "../types/client";
+import { toast } from "@/hooks/use-toast";
 
 const clients_key = "clients";
 
+export type ClientView = 'show' | 'create' | 'edit' | undefined
 
-export const fetchClients = async() => {
+export const fetchClients = async () => {
     const { data, error } = await supabase
         .from("clients")
         .select("*")
-    console.log(data, error)
+        .limit(20)
     if (error) {
         throw error;
     }
@@ -33,37 +35,87 @@ export const useFetchClients = () => {
 }
 
 export const useCreateClient = () => {
+    const queryClient = useQueryClient();
+    
     return useMutation({
-        mutationFn:async(data: Partial<Client>) => {
-            const response = await supabase
-                .from("clients")
-                .insert([data])
-            return response
+        mutationFn: async (data: Omit<Client, 'id'>) => {
+            const { data: newClient, error } = await supabase
+                .from('clients')
+                .insert(data)
+                .select()
+                .single();
+                
+            if (error) {
+                throw error;
+            }
+            
+            return newClient;
         },
-    })   
-}
-export const useUpdateClient = (id: number, data: Partial<Client>) => {
+        onSuccess: () => {
+            queryClient.invalidateQueries({ queryKey: [clients_key] });
+        },
+        onError: (error) => {
+            toast({
+                title: 'Error creating client',
+                description: error.message,
+                variant: 'destructive',
+            });
+        },
+    });
+};
+export const useUpdateClient = () => {
+    const queryClient = useQueryClient();
+    
     return useMutation({
-        mutationFn: async () => {
-            const response = await supabase
-                .from("clients")
-                .update(data)
-                .eq("id", id)
-            return response
+        mutationFn: async (data: Client) => {
+            const { id, ...updateData } = data;
+            const { data: updatedClient, error } = await supabase
+                .from('clients')
+                .update(updateData)
+                .eq('id', id)
+                .select()
+                .single();
+                
+            if (error) {
+                throw error;
+            }
+            
+            return updatedClient;
         },
-    })   
+        onSuccess: () => {
+            queryClient.invalidateQueries({ queryKey: [clients_key] });
+        },
+        onError: (error) => {
+            toast({
+                title: 'Error updating client',
+                description: error.message,
+                variant: 'destructive',
+            });
+        },
+    });
 }
 
-export const useDeleteClient = (id: number) => {
+export const useDeleteClient = () => {
+    const queryClient = useQueryClient();
+    
     return useMutation({
-        mutationFn: async () => {
-            const response = await supabase
-                .from("clients")
+        mutationFn: async (id: string) => {
+            return await supabase
+                .from('clients')
                 .delete()
-                .eq("id", id)
-            return response
+                .eq('id', id);
         },
-    })   
-}
+        onSuccess: () => {
+            queryClient.invalidateQueries({ queryKey: [clients_key] });
+        },
+        onError: (error) => {
+            toast({
+                title: error.message,
+                description: "Error deleting client",
+                variant: "destructive",
+            });
 
+        },
+    });
+};
 

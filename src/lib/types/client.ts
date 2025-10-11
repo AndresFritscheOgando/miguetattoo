@@ -1,9 +1,8 @@
 export interface Client {
-    id: number;
+    id: string;
     full_name: string;
     email: string;
     phone: string;
-    image_url: string;
-    created_at: string;
-    updated_at: string;
+    address:string;
+    image_url?: string;
 }

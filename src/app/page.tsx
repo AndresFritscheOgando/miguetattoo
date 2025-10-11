@@ -7,8 +7,23 @@ import Testimonials from "./(public)/Testimonials";
 import Contact from "./(public)/Contact";
 import Footer from "./(public)/Footer";
 import Artists from "./(public)/Artists";
+import { useEffect, useState } from "react";
+import { supabase } from "@/lib/supabase/client";
+import { Session } from "@supabase/supabase-js";
 
 export default function Home() {
+  const [session, setSession] = useState<Session | null>(null);
+
+  const checkSession = async () => {
+    const currentSession = await supabase.auth.getSession();
+    setSession(currentSession.data.session);
+    console.log(currentSession.data);
+  };
+
+  useEffect(() => {
+    checkSession();
+  }, []);
+
   return (
     <div className="min-h-screen bg-background text-foreground font-sans antialiased">
       {/* Navigation */}

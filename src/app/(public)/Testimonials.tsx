@@ -23,7 +23,7 @@ const Testimonials = () => {
   ];
 
   return (
-    <section id="testimonials" className="py-24 bg-background">
+    <section id="testimonials" className="py-64 bg-background">
       <div className="container mx-auto px-4">
         <h2 className="text-center mb-4 animate-fade-in">
           <span className="text-gradient">Lo que dicen nuestros clientes</span>
@@ -41,7 +41,7 @@ const Testimonials = () => {
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               <div className="flex gap-1 mb-4">
-                {[...Array(testimonial.rating)].map((_, i) => (
+                {Array(testimonial.rating).map((_, i) => (
                   <Star key={i} className="w-5 h-5 fill-primary text-primary" />
                 ))}
               </div>
