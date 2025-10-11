@@ -15,7 +15,7 @@ interface ModalProps {
 const Modal = ({ client, view, onClose, onChangeView }: ModalProps) => {
     return (
         <Dialog open={!!view} onOpenChange={() => onClose()}>
-            <DialogContent className="max-w-2xl">
+            <DialogContent className="max-w-2xl" showCloseButton={false}>
                 <DialogTitle className={cn("sr-only")}>
                     {view === 'create' && 'Create New Client'}
                     {view === 'edit' && 'Edit Client'}

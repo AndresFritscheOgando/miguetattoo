@@ -3,6 +3,8 @@ export interface Client {
     full_name: string;
     email: string;
     phone: string;
-    address:string;
+    address: string;
     image_url?: string;
+    created_at: string | Date;
+    updated_at?: string | Date;
 }

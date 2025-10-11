@@ -19,13 +19,26 @@ function Table({ className, ...props }: React.ComponentProps<"table">) {
   )
 }
 
-function TableHeader({ className, ...props }: React.ComponentProps<"thead">) {
+interface TableHeaderProps extends React.ComponentProps<"thead"> {
+  children?: React.ReactNode;
+}
+
+function TableHeader({ className, children, ...props }: TableHeaderProps) {
   return (
     <thead
       data-slot="table-header"
       className={cn("[&_tr]:border-b", className)}
       {...props}
-    />
+    >
+      {React.Children.map(children, (child) => {
+        if (React.isValidElement<TableRowProps>(child)) {
+          return React.cloneElement(child, {
+            'data-header': true,
+          });
+        }
+        return child;
+      })}
+    </thead>
   )
 }
 
@@ -52,12 +65,17 @@ function TableFooter({ className, ...props }: React.ComponentProps<"tfoot">) {
   )
 }
 
-function TableRow({ className, ...props }: React.ComponentProps<"tr">) {
+interface TableRowProps extends React.ComponentProps<"tr"> {
+  'data-header'?: boolean;
+}
+
+function TableRow({ className, ...props }: TableRowProps) {
   return (
     <tr
       data-slot="table-row"
       className={cn(
-        "hover:bg-muted/50 data-[state=selected]:bg-muted border-b transition-colors",
+        "data-[state=selected]:bg-muted border-b transition-colors",
+        !props['data-header'] && "hover:bg-muted/50",
         className
       )}
       {...props}
